@@ -1,9 +1,7 @@
 package org.hibernate.cfg;
 
-//
 // Source code recreated from a .class file by IntelliJ IDEA
 // (powered by FernFlower decompiler)
-//
 
 import java.util.*;
 import javax.persistence.Access;
@@ -28,9 +26,10 @@ import org.hibernate.internal.util.StringHelper;
 import org.hibernate.internal.util.collections.CollectionHelper;
 import org.jboss.logging.Logger;
 
-//As Hibernate generates columns in alphabetical order,
-//Override the core hibernate.cfg.PropertyContainer class to generate column in custom order
-//reference : https://stackoverflow.com/a/65731578/16150567
+/*  As Hibernate generates columns in alphabetical order,
+    Override the core hibernate.cfg.PropertyContainer class to generate column in custom order
+    reference : https://stackoverflow.com/a/65731578/16150567
+ */
 class PropertyContainer {
   private static final CoreMessageLogger LOG = (CoreMessageLogger)Logger.getMessageLogger(CoreMessageLogger.class, PropertyContainer.class.getName());
   private final XClass xClass;
