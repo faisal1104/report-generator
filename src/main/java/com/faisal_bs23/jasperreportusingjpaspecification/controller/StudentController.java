@@ -16,12 +16,12 @@ public class StudentController {
     this.studentService = studentService;
   }
 
-  @GetMapping("/all")
-  public ResponseEntity<?> getAllStudents(){
-    return ResponseEntity.ok(studentService.getAllStudents());
-  }
-  @GetMapping("find")
-  public ResponseEntity<?> getAllStudentsBy(@RequestParam(value = "year") final String year){
-    return ResponseEntity.ok(studentService.getByCondition(year));
+  @GetMapping("/get")
+  public ResponseEntity<?> getAllStudents(
+      @RequestParam(value = "year", required = false) final String year,
+      @RequestParam(value = "semester", required = false) final String semester,
+      @RequestParam(value = "section", required = false) final String section,
+      @RequestParam(value = "creditCompleted", required = false) final Integer creditCompleted){
+    return ResponseEntity.ok(studentService.getStudents(year, semester, section, creditCompleted));
   }
 }

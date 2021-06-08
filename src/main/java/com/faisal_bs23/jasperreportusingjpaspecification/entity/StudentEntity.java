@@ -23,9 +23,9 @@ public class StudentEntity implements Serializable {
   private String currentSemester;
   private String currentSection;
   private String currentCgpa;
-  private String creditCompleted;
+  private int creditCompleted;
 
-  public StudentEntity(String studentId, String studentName, String admissionYear, String currentSemester, String currentSection, String currentCgpa, String creditCompleted) {
+  public StudentEntity(String studentId, String studentName, String admissionYear, String currentSemester, String currentSection, String currentCgpa, int creditCompleted) {
     this.studentId = studentId;
     this.studentName = studentName;
     this.admissionYear = admissionYear;

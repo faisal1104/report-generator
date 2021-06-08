@@ -15,5 +15,5 @@ public class Student {
   private String currentSemester;
   private String currentSection;
   private String currentCgpa;
-  private String creditCompleted;
+  private int creditCompleted;
 }

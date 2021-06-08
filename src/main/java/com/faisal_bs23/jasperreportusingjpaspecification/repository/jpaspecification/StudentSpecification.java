@@ -1,5 +1,6 @@
 package com.faisal_bs23.jasperreportusingjpaspecification.repository.jpaspecification;
 
+import com.faisal_bs23.jasperreportusingjpaspecification.domain.StudentFilter;
 import com.faisal_bs23.jasperreportusingjpaspecification.entity.StudentEntity;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -23,8 +24,15 @@ public class StudentSpecification implements Specification<StudentEntity> {
   }
 
   //
-  public void applyFilter(){
-
+  public void applyFilter(StudentFilter filter){
+    if(filter.getAdmissionYear()!=null)
+      addSearchCriteria(new SearchCriteria("admissionYear",filter.getAdmissionYear(),SearchOperation.EQUAL));
+    if (filter.getCurrentSemester() != null)
+      addSearchCriteria(new SearchCriteria("currentSemester",filter.getCurrentSemester(),SearchOperation.EQUAL));
+    if (filter.getCurrentSection() != null)
+      addSearchCriteria(new SearchCriteria("currentSection",filter.getCurrentSection(),SearchOperation.EQUAL));
+    if (filter.getCreditCompleted() != null)
+      addSearchCriteria(new SearchCriteria("creditCompleted",filter.getCreditCompleted(),SearchOperation.GREATER_THAN_EQUAL));
   }
 
   @Override

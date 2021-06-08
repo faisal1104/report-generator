@@ -1,5 +1,6 @@
 package com.faisal_bs23.jasperreportusingjpaspecification.service;
 
+import com.faisal_bs23.jasperreportusingjpaspecification.domain.StudentFilter;
 import com.faisal_bs23.jasperreportusingjpaspecification.entity.StudentEntity;
 import com.faisal_bs23.jasperreportusingjpaspecification.repository.jpa.StudentRepository;
 import com.faisal_bs23.jasperreportusingjpaspecification.repository.jpaspecification.SearchCriteria;
@@ -18,18 +19,12 @@ public class StudentService {
     this.studentRepository = studentRepository;
   }
 
-  public List<StudentEntity> getAllStudents() {
-    return studentRepository.findAll();
-  }
 
-  public List<StudentEntity> getByCondition(String year){
-    System.out.println(year);
+  public List<StudentEntity> getStudents(String year,String semester,String section,Integer creditCompleted){
+    var filter = new StudentFilter(year,semester,section,creditCompleted);
+    var specification = new StudentSpecification();
+    specification.applyFilter(filter);
 
-    var filter = new StudentSpecification();
-    filter.addSearchCriteria(new SearchCriteria("admissionYear", year, SearchOperation.EQUAL));
-    var studentEntities = studentRepository.findAll(filter);
-    studentEntities.forEach(System.out::println);
-
-    return studentEntities;
+    return studentRepository.findAll(specification);
   }
 }
