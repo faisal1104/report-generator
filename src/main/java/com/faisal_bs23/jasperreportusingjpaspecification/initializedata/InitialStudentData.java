@@ -73,7 +73,7 @@ public class InitialStudentData implements CommandLineRunner {
     student[49] = new StudentEntity("C201009","Aziz", "2018", "4", "B" , "3.5", 100);
     student[50] = new StudentEntity("C201010","Adib10", "2018", "4", "C" , "3.6", 105);
 
-    student[51] = new StudentEntity("C211001","Mashrafi", "20168", "3", "B" , "3.3", 90);
+    student[51] = new StudentEntity("C211001","Mashrafi", "2018", "3", "B" , "3.3", 90);
     student[52] = new StudentEntity("C211002","Tamim", "2018", "3", "B" , "3.3", 95);
     student[53] = new StudentEntity("C211003","Sakib", "2018", "3", "B" , "3.6", 90);
     student[54] = new StudentEntity("C211004","Mushfiq", "2018", "3", "B" , "3.2", 95);

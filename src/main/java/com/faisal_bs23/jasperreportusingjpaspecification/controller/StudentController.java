@@ -1,6 +1,8 @@
 package com.faisal_bs23.jasperreportusingjpaspecification.controller;
 
 import com.faisal_bs23.jasperreportusingjpaspecification.domain.StudentDomain;
+import com.faisal_bs23.jasperreportusingjpaspecification.domain.StudentFilter;
+import com.faisal_bs23.jasperreportusingjpaspecification.domain.StudentGroupBy;
 import com.faisal_bs23.jasperreportusingjpaspecification.domain.report.ExportType;
 import com.faisal_bs23.jasperreportusingjpaspecification.service.StudentService;
 import net.sf.jasperreports.engine.JRException;
@@ -41,6 +43,20 @@ public class StudentController {
       @RequestParam(value = "exportType", required = false) final ExportType exportType,
       HttpServletResponse response) throws IOException, JRException {
     studentService.exportStudentReport(year, semester, section, creditCompleted,exportType, response);
+    return ResponseEntity.ok().build();
+  }
+
+  @GetMapping("/list/export/2")
+  public ResponseEntity<Void> exportStudentGroupByReport(
+      @RequestParam(value = "groupBy") final List<StudentGroupBy> groupBy,
+      @RequestParam(value = "year", required = false) final String year,
+      @RequestParam(value = "semester", required = false) final String semester,
+      @RequestParam(value = "section", required = false) final String section,
+      @RequestParam(value = "cgpa", required = false) final String cgpa,
+      @RequestParam(value = "exportType", required = false) final ExportType exportType,
+      HttpServletResponse response) throws IOException, JRException {
+    var filter = new StudentFilter(year,semester,section, cgpa, exportType, groupBy);
+    studentService.exportStudentGroupByReport(filter, response);
     return ResponseEntity.ok().build();
   }
 }

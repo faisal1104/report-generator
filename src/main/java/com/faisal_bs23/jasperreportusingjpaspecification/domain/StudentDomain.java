@@ -16,5 +16,6 @@ public class StudentDomain {
   private String currentSemester;
   private String currentSection;
   private String currentCgpa;
-  private int creditCompleted;
+  private Integer creditCompleted;
+  private Integer studentCount;
 }
