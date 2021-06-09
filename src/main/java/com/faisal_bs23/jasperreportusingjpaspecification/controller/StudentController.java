@@ -25,7 +25,7 @@ public class StudentController {
     this.studentService = studentService;
   }
 
-  @GetMapping("/get")
+  @GetMapping("/all")
   public ResponseEntity<List<StudentDomain>> getAllStudents(
       @RequestParam(value = "year", required = false) final String year,
       @RequestParam(value = "semester", required = false) final String semester,
@@ -34,7 +34,7 @@ public class StudentController {
     return ResponseEntity.ok(studentService.getStudents(year, semester, section, creditCompleted));
   }
 
-  @GetMapping("/list/export")
+  @GetMapping("/list-report/export")
   public ResponseEntity<Void> exportStudentReport(
       @RequestParam(value = "year", required = false) final String year,
       @RequestParam(value = "semester", required = false) final String semester,
@@ -46,9 +46,9 @@ public class StudentController {
     return ResponseEntity.ok().build();
   }
 
-  @GetMapping("/list/export/2")
+  @GetMapping("/groupby-report/export")
   public ResponseEntity<Void> exportStudentGroupByReport(
-      @RequestParam(value = "groupBy") final List<StudentGroupBy> groupBy,
+      @RequestParam(value = "groupBy",required = false) final List<StudentGroupBy> groupBy,
       @RequestParam(value = "year", required = false) final String year,
       @RequestParam(value = "semester", required = false) final String semester,
       @RequestParam(value = "section", required = false) final String section,

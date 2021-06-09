@@ -6,11 +6,13 @@ import com.faisal_bs23.jasperreportusingjpaspecification.domain.StudentGroupBy;
 import com.faisal_bs23.jasperreportusingjpaspecification.domain.report.ExportType;
 import com.faisal_bs23.jasperreportusingjpaspecification.domain.report.dynamic.DynamicReport;
 import com.faisal_bs23.jasperreportusingjpaspecification.entity.StudentEntity;
+import com.faisal_bs23.jasperreportusingjpaspecification.exception_handler.GlobalCustomException;
 import com.faisal_bs23.jasperreportusingjpaspecification.repository.jpa.StudentRepository;
 import com.faisal_bs23.jasperreportusingjpaspecification.repository.jpaspecification.StudentSpecification;
 import com.faisal_bs23.jasperreportusingjpaspecification.service.report.dynamic.DynamicReportService;
 import com.faisal_bs23.jasperreportusingjpaspecification.util.StudentMapper;
 import net.sf.jasperreports.engine.JRException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -47,6 +49,8 @@ public class StudentService {
   }
 
   public void exportStudentReport(String year, String semester, String section, Integer creditCompleted, ExportType exType, HttpServletResponse response) throws IOException, JRException {
+    if(exType==null)
+      throw new GlobalCustomException("ExportType parameter is missing.", HttpStatus.BAD_REQUEST);
     var filter = new StudentFilter(year,semester,section,creditCompleted);
     filter.setExportType(exType);
     var specification = new StudentSpecification();
@@ -64,12 +68,12 @@ public class StudentService {
       StudentFilter filter) {
 
     var groupBy = filter.getGroupByList();
-    if (groupBy.size() < 1) {
-      throw new RuntimeException("At least provide one groupBy to query");
+    if (groupBy == null) {
+      throw new GlobalCustomException("At least provide one groupBy to query", HttpStatus.BAD_REQUEST);
     }
     var set = new HashSet<>(groupBy);
     if (set.size() < groupBy.size())
-      throw new RuntimeException("Duplicates groupBy can't be applied");
+      throw new GlobalCustomException("Duplicates groupBy can't be applied", HttpStatus.BAD_REQUEST);
 
     List<StudentDomain> studentDomainList = new ArrayList<>();
     CriteriaBuilder cb = entityManager.getCriteriaBuilder();
@@ -176,11 +180,13 @@ public class StudentService {
 
 
       default:
-        throw new RuntimeException("Unavailable");
+        throw new GlobalCustomException("GroupBy parameter not found", HttpStatus.NOT_FOUND);
     }
   }
 
   public void exportStudentGroupByReport(StudentFilter filter, HttpServletResponse response) throws IOException, JRException {
+    if(filter.getExportType() == null)
+      throw new GlobalCustomException("ExportType parameter is missing.", HttpStatus.BAD_REQUEST);
     var list = getStudentByCriteraApi(filter);
     var inputStream = filter.getInputStream();
     var title = filter.getReportTitle();

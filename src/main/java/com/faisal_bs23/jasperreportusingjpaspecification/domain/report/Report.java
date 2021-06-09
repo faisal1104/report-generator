@@ -1,5 +1,6 @@
 package com.faisal_bs23.jasperreportusingjpaspecification.domain.report;
 
+import com.faisal_bs23.jasperreportusingjpaspecification.exception_handler.GlobalCustomException;
 import lombok.Data;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
@@ -12,6 +13,7 @@ import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import net.sf.jasperreports.export.SimpleWriterExporterOutput;
 import net.sf.jasperreports.export.SimpleXlsxReportConfiguration;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -79,7 +81,7 @@ public class Report {
       setHeaderAndContentType(response, exportType);
       exporter.exportReport();
     } else {
-      throw new RuntimeException("File Format isn't supported!");
+      throw new GlobalCustomException("File Format isn't supported!", HttpStatus.FORBIDDEN);
     }
   }
 
