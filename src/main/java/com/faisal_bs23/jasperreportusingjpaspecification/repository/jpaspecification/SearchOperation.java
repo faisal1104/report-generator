@@ -9,9 +9,4 @@ public enum SearchOperation {
   NOT_EQUAL,
   NULL,
   NOT_NULL,
-  MATCH,
-  MATCH_START,
-  MATCH_END,
-  IN,
-  NOT_IN
 }

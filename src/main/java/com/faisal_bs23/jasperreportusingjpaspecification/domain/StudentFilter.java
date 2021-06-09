@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.InputStream;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.faisal_bs23.jasperreportusingjpaspecification.domain.StudentGroupBy.*;
 import static com.faisal_bs23.jasperreportusingjpaspecification.util.Constant.EXTENSION_JRXML;
 import static com.faisal_bs23.jasperreportusingjpaspecification.util.Constant.FOLDER_PATH_REPORT_DYNAMIC;
 
@@ -23,6 +23,7 @@ public class StudentFilter {
   private String currentCgpa;
   private Integer creditCompleted;
   private ExportType exportType;
+  private Integer studentCounter;
   private List<StudentGroupBy> groupByList;
 
   public StudentFilter(String admissionYear, String currentSemester, String currentSection, String currentCgpa, ExportType exportType, List<StudentGroupBy> groupByList) {
@@ -59,7 +60,7 @@ public class StudentFilter {
     List<Integer> indexesOfColumnTypeNumber = new ArrayList<>();
     List<List<String>> rows = new ArrayList<>();
     List<String> summary = new ArrayList<>();
-    int studentCounter = 0;
+    studentCounter = 0;
 
     if(groupByList != null){
       //dynamically add header
@@ -78,22 +79,21 @@ public class StudentFilter {
       columnHeaders.add("Credit Completed");
     }
 
-    for (var s : list) {
+    for (var student : list) {
       List<String> row = new ArrayList<>();
-      if(s.getStudentId()!=null)row.add(s.getStudentId());
-      if(s.getStudentName()!=null) row.add(s.getStudentName());
-      if(s.getAdmissionYear()!=null) row.add(s.getAdmissionYear());
-      if(s.getCurrentSemester()!=null) row.add(s.getCurrentSemester());
-      if(s.getCurrentSection()!=null) row.add(s.getCurrentSection());
-      if(s.getCurrentCgpa()!=null) row.add(s.getCurrentCgpa());
-      if(s.getCreditCompleted() != null) row.add(s.getCreditCompleted().toString());
-      if(s.getStudentCount()!=null) {
-        row.add(s.getStudentCount().toString());
-        studentCounter+=s.getStudentCount();
+      if(groupByList != null)
+        addRowForGroupBy(row, student);
+      else {
+        row.add(student.getStudentId());
+        row.add(student.getStudentName());
+        row.add(student.getAdmissionYear());
+        row.add(student.getCurrentSemester());
+        row.add(student.getCurrentSection());
+        row.add(student.getCurrentCgpa());
+        row.add(student.getCreditCompleted().toString());
       }
       rows.add(row);
     }
-
     // summary
     summary.add("Total Student");
     if(groupByList != null)
@@ -106,5 +106,25 @@ public class StudentFilter {
     indexesOfColumnTypeNumber.add(columnHeaders.size() - 1); // studentNumber
 
     return new DynamicReportProperties(columnHeaders, indexesOfColumnTypeNumber, rows, summary);
+  }
+  void addRowForGroupBy (List<String> row, StudentDomain student) {
+    for (var groupBy: groupByList) {
+      switch (groupBy) {
+        case SEMESTER:
+          row.add(student.getCurrentSemester());
+          break;
+        case SECTION:
+          row.add(student.getCurrentSection());
+          break;
+        case ADMISSION_YEAR:
+          row.add(student.getAdmissionYear());
+          break;
+        case CGPA:
+          row.add(student.getCurrentCgpa());
+          break;
+      }
+    }
+    row.add(student.getStudentCount().toString());
+    studentCounter+=student.getStudentCount();
   }
 }

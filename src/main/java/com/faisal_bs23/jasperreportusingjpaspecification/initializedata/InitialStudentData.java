@@ -84,27 +84,27 @@ public class InitialStudentData implements CommandLineRunner {
     student[59] = new StudentEntity("C211009","Miraj", "2018", "3", "B" , "3.5", 90);
     student[60] = new StudentEntity("C211010","Liton", "2018", "3", "B" , "3.5", 95);
 
-    student[61] = new StudentEntity("C221001","Neymar", "2018", "8", "B" , "3.2", 80);
-    student[62] = new StudentEntity("C221002","Oskar", "2018", "8", "B" , "3.3", 85);
-    student[63] = new StudentEntity("C221003","Coutinho", "2018", "8", "A" , "3.7", 85);
-    student[64] = new StudentEntity("C221004","Silva", "2018", "8", "B" , "3.4", 85);
-    student[65] = new StudentEntity("C221005","Casemiro", "2018", "8", "A" , "3.5", 85);
-    student[66] = new StudentEntity("C221006","Fabinho", "2018", "8", "A" , "3.6", 80);
-    student[67] = new StudentEntity("C221007","Allison", "2018", "8", "B" , "3.3", 80);
-    student[68] = new StudentEntity("C221008","Firmino", "2018", "8", "C" , "3.5", 80);
-    student[69] = new StudentEntity("C221009","Militao", "2018", "8", "B" , "3.4", 80);
-    student[70] = new StudentEntity("C221010","Marcelo", "2018", "8", "C" , "3.7", 80);
+    student[61] = new StudentEntity("C221001","Neymar", "2019", "2", "B" , "3.2", 80);
+    student[62] = new StudentEntity("C221002","Oskar", "2019", "2", "B" , "3.3", 85);
+    student[63] = new StudentEntity("C221003","Coutinho", "2019", "2", "A" , "3.7", 85);
+    student[64] = new StudentEntity("C221004","Silva", "2019", "2", "B" , "3.4", 85);
+    student[65] = new StudentEntity("C221005","Casemiro", "2019", "2", "A" , "3.5", 85);
+    student[66] = new StudentEntity("C221006","Fabinho", "2019", "2", "A" , "3.6", 80);
+    student[67] = new StudentEntity("C221007","Allison", "2019", "2", "B" , "3.3", 80);
+    student[68] = new StudentEntity("C221008","Firmino", "2019", "2", "C" , "3.5", 80);
+    student[69] = new StudentEntity("C221009","Militao", "2019", "2", "B" , "3.4", 80);
+    student[70] = new StudentEntity("C221010","Marcelo", "2019", "2", "C" , "3.7", 80);
 
-    student[71] = new StudentEntity("C231001","Messi", "2016", "7", "B" , "3.6", 70);
-    student[72] = new StudentEntity("C231002","Ronaldo", "2016", "7", "B" , "3.7", 70);
-    student[73] = new StudentEntity("C231003","Pele", "2016", "7", "B" , "3.3", 70);
-    student[74] = new StudentEntity("C231004","Meradona", "2016", "7", "B" , "3.6", 70);
-    student[75] = new StudentEntity("C231005","Cryff", "2016", "7", "B" , "3.7", 70);
-    student[76] = new StudentEntity("C231006","Backham", "2016", "7", "B" , "3.8", 70);
-    student[77] = new StudentEntity("C231007","Ronaldinho", "2016", "7", "B" , "3.4", 70);
-    student[78] = new StudentEntity("C231008","Carlos", "2016", "7", "B" , "3.2", 70);
-    student[79] = new StudentEntity("C231009","Cafu", "2016", "7", "B" , "3.1", 70);
-    student[80] = new StudentEntity("C231010","Zidan", "2016", "7", "B" , "3.9", 70);
+    student[71] = new StudentEntity("C231001","Messi", "2019", "1", "B" , "3.6", 70);
+    student[72] = new StudentEntity("C231002","Ronaldo", "2019", "1", "B" , "3.7", 70);
+    student[73] = new StudentEntity("C231003","Pele", "2019", "1", "A" , "3.3", 70);
+    student[74] = new StudentEntity("C231004","Meradona", "2019", "1", "B" , "3.6", 75);
+    student[75] = new StudentEntity("C231005","Cryff", "2019", "1", "A" , "3.7", 70);
+    student[76] = new StudentEntity("C231006","Backham", "2019", "1", "C" , "3.8", 70);
+    student[77] = new StudentEntity("C231007","Ronaldinho", "2019", "1", "C" , "3.4", 75);
+    student[78] = new StudentEntity("C231008","Carlos", "2019", "1", "B" , "3.2", 75);
+    student[79] = new StudentEntity("C231009","Cafu", "2019", "1", "C" , "3.1", 70);
+    student[80] = new StudentEntity("C231010","Zidan", "2019", "1", "A" , "3.9", 75);
 
     for (int i=1;i<=80;i++){
       var s = student[i];
