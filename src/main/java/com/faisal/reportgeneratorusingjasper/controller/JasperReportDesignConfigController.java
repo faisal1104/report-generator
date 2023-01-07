@@ -39,7 +39,7 @@ public class JasperReportDesignConfigController {
             "report-design-config",
         })
     @PostMapping()
-    public ResponseEntity<Void> addReportDesignConfiguration(@RequestBody JasperDesignConfiguration reportConfiguration){
+    public ResponseEntity<Void> addReportDesignConfiguration(@RequestBody JasperDesignConfiguration reportConfiguration) {
         reportDesignConfigurationService.add(reportConfiguration);
         return ResponseEntity.ok().build();
     }

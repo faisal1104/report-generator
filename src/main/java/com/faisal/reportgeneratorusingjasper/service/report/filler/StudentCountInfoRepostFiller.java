@@ -41,7 +41,7 @@ public class StudentCountInfoRepostFiller {
             if (groupByList.contains(StudentGroupBy.SECTION))
                 row.add(student.getCurrentSection());
 
-            studentCounter+=student.getCount();
+            studentCounter += student.getCount();
             row.add(student.getCount().toString());
             rows.add(row);
         }

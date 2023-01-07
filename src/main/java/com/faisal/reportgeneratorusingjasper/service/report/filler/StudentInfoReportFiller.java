@@ -20,25 +20,25 @@ public class StudentInfoReportFiller {
         List<String> summary = new ArrayList<>();
         AtomicInteger studentCounter = new AtomicInteger(0);
 
-            columnHeaders.add("Student Id");
-            columnHeaders.add("Student Name");
-            columnHeaders.add("Admission Year");
-            columnHeaders.add("Current Semester");
-            columnHeaders.add("Current Section");
-            columnHeaders.add("Current CGPA");
-            columnHeaders.add("Credit Completed");
+        columnHeaders.add("Student Id");
+        columnHeaders.add("Student Name");
+        columnHeaders.add("Admission Year");
+        columnHeaders.add("Current Semester");
+        columnHeaders.add("Current Section");
+        columnHeaders.add("Current CGPA");
+        columnHeaders.add("Credit Completed");
 
 
         for (var student : list) {
             List<String> row = new ArrayList<>();
 
-                row.add(student.getStudentId());
-                row.add(student.getStudentName());
-                row.add(student.getAdmissionYear());
-                row.add(student.getCurrentSemester());
-                row.add(student.getCurrentSection());
-                row.add(student.getCurrentCgpa());
-                row.add(student.getCreditCompleted().toString());
+            row.add(student.getStudentId());
+            row.add(student.getStudentName());
+            row.add(student.getAdmissionYear());
+            row.add(student.getCurrentSemester());
+            row.add(student.getCurrentSection());
+            row.add(student.getCurrentCgpa());
+            row.add(student.getCreditCompleted().toString());
 
             rows.add(row);
         }

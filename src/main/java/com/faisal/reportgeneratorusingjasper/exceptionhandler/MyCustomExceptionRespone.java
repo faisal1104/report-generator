@@ -6,13 +6,14 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter@Setter
+@Getter
+@Setter
 public class MyCustomExceptionRespone {
 
-  private String message;
-  @JsonProperty("time stamp")
-  private LocalDateTime dateTime;
-  @JsonProperty("server status code")
-  private String serverStatusCode;
+    private String message;
+    @JsonProperty("time stamp")
+    private LocalDateTime dateTime;
+    @JsonProperty("server status code")
+    private String serverStatusCode;
 
 }

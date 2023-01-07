@@ -7,10 +7,11 @@ import lombok.Setter;
 import java.util.List;
 
 @AllArgsConstructor
-@Getter@Setter
+@Getter
+@Setter
 public class DynamicReportProperties {
-  List<String> columnHeaders;
-  List<Integer> indexesOfColumnTypeNumber;
-  List<List<String>> rows;
-  List<String> summary;
+    List<String> columnHeaders;
+    List<Integer> indexesOfColumnTypeNumber;
+    List<List<String>> rows;
+    List<String> summary;
 }

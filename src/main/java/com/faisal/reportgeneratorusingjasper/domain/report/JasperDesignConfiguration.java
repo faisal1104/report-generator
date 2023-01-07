@@ -9,9 +9,9 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class JasperDesignConfiguration {
 
-  private long id;
+    private long id;
 
-  private String reportOwnerName;
+    private String reportOwnerName;
 
-  private String themeColorCode;
+    private String themeColorCode;
 }

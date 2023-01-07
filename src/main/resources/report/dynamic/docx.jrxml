@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape_1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="cb94b4ca-f40d-4269-9541-a992393b9262">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="Blank_A4_Landscape_1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true"
+              uuid="cb94b4ca-f40d-4269-9541-a992393b9262">
     <property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
     <style name="Title" mode="Opaque" forecolor="#FFFFFF" backcolor="#800080" fontSize="50" isBold="false"/>
     <subDataset name="loanRepaymentHistoryData" uuid="1ed43f20-b075-4825-bb40-941c03926edd">
@@ -20,7 +25,8 @@
     <title>
         <band height="79" splitType="Stretch">
             <staticText>
-                <reportElement x="-1" y="30" width="121" height="15" forecolor="#000000" uuid="1ce3ac12-d385-447f-92f6-be0a0f65f13e">
+                <reportElement x="-1" y="30" width="121" height="15" forecolor="#000000"
+                               uuid="1ce3ac12-d385-447f-92f6-be0a0f65f13e">
                     <property name="com.jaspersoft.studio.unit.width" value="px"/>
                 </reportElement>
                 <textElement textAlignment="Left" verticalAlignment="Middle">
@@ -29,7 +35,8 @@
                 <text><![CDATA[www.iiuc.ac.bd]]></text>
             </staticText>
             <staticText>
-                <reportElement x="-1" y="-5" width="170" height="15" forecolor="#000000" uuid="52318ea9-32a7-497b-9124-282a068362c0">
+                <reportElement x="-1" y="-5" width="170" height="15" forecolor="#000000"
+                               uuid="52318ea9-32a7-497b-9124-282a068362c0">
                     <property name="com.jaspersoft.studio.unit.width" value="px"/>
                 </reportElement>
                 <textElement textAlignment="Left" verticalAlignment="Middle">
@@ -38,7 +45,8 @@
                 <text><![CDATA[International Islamic University]]></text>
             </staticText>
             <staticText>
-                <reportElement x="-1" y="13" width="141" height="15" forecolor="#000000" uuid="d42121ea-853d-467e-a3f3-9369b1ff9b2b">
+                <reportElement x="-1" y="13" width="141" height="15" forecolor="#000000"
+                               uuid="d42121ea-853d-467e-a3f3-9369b1ff9b2b">
                     <property name="com.jaspersoft.studio.unit.width" value="px"/>
                 </reportElement>
                 <textElement textAlignment="Left" verticalAlignment="Middle">
@@ -47,14 +55,16 @@
                 <text><![CDATA[Chittagong, Bangladesh]]></text>
             </staticText>
             <textField isBlankWhenNull="true">
-                <reportElement x="177" y="2" width="445" height="44" forecolor="#000000" uuid="0531ed2f-cd80-4d2a-a4e9-2f5807b2ebca"/>
+                <reportElement x="177" y="2" width="445" height="44" forecolor="#000000"
+                               uuid="0531ed2f-cd80-4d2a-a4e9-2f5807b2ebca"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font size="18" isBold="true"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
             </textField>
             <textField pattern="EEE dd MMMMM yyyy">
-                <reportElement x="702" y="15" width="96" height="20" forecolor="#000000" uuid="617ea40a-1924-4d97-aa0f-4e761e7fc743">
+                <reportElement x="702" y="15" width="96" height="20" forecolor="#000000"
+                               uuid="617ea40a-1924-4d97-aa0f-4e761e7fc743">
                     <property name="com.jaspersoft.studio.unit.width" value="px"/>
                 </reportElement>
                 <textElement textAlignment="Left" verticalAlignment="Middle">
@@ -63,7 +73,8 @@
                 <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
             </textField>
             <staticText>
-                <reportElement x="660" y="15" width="42" height="20" forecolor="#000000" uuid="b1b79b65-062a-449e-8df8-72e6f4c0a5bf">
+                <reportElement x="660" y="15" width="42" height="20" forecolor="#000000"
+                               uuid="b1b79b65-062a-449e-8df8-72e6f4c0a5bf">
                     <property name="com.jaspersoft.studio.unit.width" value="px"/>
                 </reportElement>
                 <textElement textAlignment="Right" verticalAlignment="Middle">

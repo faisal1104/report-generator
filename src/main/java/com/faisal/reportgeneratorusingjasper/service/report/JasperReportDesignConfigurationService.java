@@ -15,40 +15,40 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class JasperReportDesignConfigurationService {
-  private final JasperDesignConfigurationRepository reportConfigurationRepository;
+    private final JasperDesignConfigurationRepository reportConfigurationRepository;
 
-  private static final String greenColorCode = "#00A95D";
+    private static final String greenColorCode = "#00A95D";
 
-  public void add(JasperDesignConfiguration reportConfiguration) {
-    var entity =
-        reportConfigurationRepository
-            .findByReportOwnerName(reportConfiguration.getReportOwnerName())
-            .orElseGet(JasperDesignConfigurationEntity::new);
-    BeanUtils.copyProperties(reportConfiguration, entity, "id");
-    reportConfigurationRepository.save(entity);
-  }
+    public void add(JasperDesignConfiguration reportConfiguration) {
+        var entity =
+            reportConfigurationRepository
+                .findByReportOwnerName(reportConfiguration.getReportOwnerName())
+                .orElseGet(JasperDesignConfigurationEntity::new);
+        BeanUtils.copyProperties(reportConfiguration, entity, "id");
+        reportConfigurationRepository.save(entity);
+    }
 
-  public List<JasperDesignConfiguration> getAll() {
-    return reportConfigurationRepository.findAll().stream()
-        .map(
-            e -> {
-              var domain = new JasperDesignConfiguration();
-              BeanUtils.copyProperties(e, domain);
-              return domain;
-            })
-        .collect(Collectors.toList());
-  }
+    public List<JasperDesignConfiguration> getAll() {
+        return reportConfigurationRepository.findAll().stream()
+            .map(
+                e -> {
+                    var domain = new JasperDesignConfiguration();
+                    BeanUtils.copyProperties(e, domain);
+                    return domain;
+                })
+            .collect(Collectors.toList());
+    }
 
 
-  public JasperDesignConfiguration getConfigurationByClientName(String reportOwnerName) {
-    return reportConfigurationRepository
-        .findByReportOwnerName(reportOwnerName)
-        .map(
-            e -> {
-              var domain = new JasperDesignConfiguration();
-              BeanUtils.copyProperties(e, domain);
-              return domain;
-            })
-        .orElse(new JasperDesignConfiguration().setThemeColorCode(greenColorCode));
-  }
+    public JasperDesignConfiguration getConfigurationByClientName(String reportOwnerName) {
+        return reportConfigurationRepository
+            .findByReportOwnerName(reportOwnerName)
+            .map(
+                e -> {
+                    var domain = new JasperDesignConfiguration();
+                    BeanUtils.copyProperties(e, domain);
+                    return domain;
+                })
+            .orElse(new JasperDesignConfiguration().setThemeColorCode(greenColorCode));
+    }
 }

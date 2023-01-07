@@ -5,16 +5,16 @@ import com.faisal.reportgeneratorusingjasper.persistence.entity.StudentEntity;
 
 public class StudentMapper {
 
-  public static StudentResponse entityToDomain(StudentEntity entity){
-    return new StudentResponse()
-        .setStudentId(entity.getStudentId())
-    .setStudentName(entity.getStudentName())
-    .setAdmissionYear(entity.getAdmissionYear())
-    .setCurrentSemester(entity.getCurrentSemester())
-    .setCurrentSection(entity.getCurrentSection())
-    .setCurrentCgpa(entity.getCurrentCgpa())
-    .setCreditCompleted(entity.getCreditCompleted());
-  }
+    public static StudentResponse entityToDomain(StudentEntity entity) {
+        return new StudentResponse()
+            .setStudentId(entity.getStudentId())
+            .setStudentName(entity.getStudentName())
+            .setAdmissionYear(entity.getAdmissionYear())
+            .setCurrentSemester(entity.getCurrentSemester())
+            .setCurrentSection(entity.getCurrentSection())
+            .setCurrentCgpa(entity.getCurrentCgpa())
+            .setCreditCompleted(entity.getCreditCompleted());
+    }
 /*  public ObjectMapper<StudentResponse,StudentEntity> domainToEntity(){
     return domain-> new StudentEntity(){
       {

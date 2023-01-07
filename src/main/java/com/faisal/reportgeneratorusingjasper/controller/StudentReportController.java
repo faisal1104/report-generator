@@ -20,46 +20,46 @@ import java.util.Objects;
 @RestController
 public class StudentReportController implements StudentReportApi {
 
-  private final StudentService studentService;
+    private final StudentService studentService;
 
-  public StudentReportController(StudentService studentService) {
-    this.studentService = studentService;
-  }
+    public StudentReportController(StudentService studentService) {
+        this.studentService = studentService;
+    }
 
-  @Override
-  public ResponseEntity<List<StudentResponse>> getAllStudentList(
-      String year, String semester, String section, Integer creditCompleted) {
-    var filter = new StudentFilter()
-        .setAdmissionYear(year).setCurrentSemester(semester).setCurrentSection(section)
-        .setCreditCompleted(creditCompleted);
-    return ResponseEntity.ok(studentService.getStudents(filter));
-  }
+    @Override
+    public ResponseEntity<List<StudentResponse>> getAllStudentList(
+        String year, String semester, String section, Integer creditCompleted) {
+        var filter = new StudentFilter()
+            .setAdmissionYear(year).setCurrentSemester(semester).setCurrentSection(section)
+            .setCreditCompleted(creditCompleted);
+        return ResponseEntity.ok(studentService.getStudents(filter));
+    }
 
-  @Override
-  public ResponseEntity<Void> exportAllStudentReport(
-      String year, String semester, String section, Integer creditCompleted, ExportType exportType, HttpServletResponse response) throws IOException, JRException {
+    @Override
+    public ResponseEntity<Void> exportAllStudentReport(
+        String year, String semester, String section, Integer creditCompleted, ExportType exportType, HttpServletResponse response) throws IOException, JRException {
 
-    var filter = new StudentFilter()
-        .setAdmissionYear(year).setCurrentSemester(semester).setCurrentSection(section)
-        .setCreditCompleted(creditCompleted);
-    filter.setExportType(exportType);
-    studentService.exportStudentReport(filter, response);
-    return ResponseEntity.ok().build();
-  }
+        var filter = new StudentFilter()
+            .setAdmissionYear(year).setCurrentSemester(semester).setCurrentSection(section)
+            .setCreditCompleted(creditCompleted);
+        filter.setExportType(exportType);
+        studentService.exportStudentReport(filter, response);
+        return ResponseEntity.ok().build();
+    }
 
-  @Override
-  public ResponseEntity<Void> exportStudentGroupByReport(
-      List<StudentGroupBy> groupBy, String year, String semester, String section, ExportType exportType, HttpServletResponse response) throws IOException, JRException {
+    @Override
+    public ResponseEntity<Void> exportStudentGroupByReport(
+        List<StudentGroupBy> groupBy, String year, String semester, String section, ExportType exportType, HttpServletResponse response) throws IOException, JRException {
 
-    if (Objects.isNull(groupBy) || CollectionUtils.isEmpty(groupBy))
-      throw new GlobalCustomException("At least provide one groupBy to query", HttpStatus.BAD_REQUEST);
+        if (Objects.isNull(groupBy) || CollectionUtils.isEmpty(groupBy))
+            throw new GlobalCustomException("At least provide one groupBy to query", HttpStatus.BAD_REQUEST);
 
-    var filter = new StudentFilter()
-        .setGroupByList(groupBy)
-        .setExportType(exportType)
-        .setCurrentSemester(semester)
-        .setAdmissionYear(year).setCurrentSection(section);
-    studentService.exportStudentGroupByReport(filter, response);
-    return ResponseEntity.ok().build();
-  }
+        var filter = new StudentFilter()
+            .setGroupByList(groupBy)
+            .setExportType(exportType)
+            .setCurrentSemester(semester)
+            .setAdmissionYear(year).setCurrentSection(section);
+        studentService.exportStudentGroupByReport(filter, response);
+        return ResponseEntity.ok().build();
+    }
 }
