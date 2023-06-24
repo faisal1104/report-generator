@@ -1,7 +1,10 @@
 package com.faisal.reportgeneratorusingjasper;
 
+import com.faisal.reportgeneratorusingjasper.initializedata.StudentDataInitializer;
+import com.faisal.reportgeneratorusingjasper.util.Constant;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -15,17 +18,11 @@ import springfox.documentation.spring.web.plugins.Docket;
 public class ReportGeneratorUsingJasperApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ReportGeneratorUsingJasperApplication.class, args);
+        ConfigurableApplicationContext ctx = SpringApplication.run(ReportGeneratorUsingJasperApplication.class, args);
+        StudentDataInitializer studentDataInitializer = ctx.getBeanFactory().getBean(StudentDataInitializer.class);
+        studentDataInitializer.run(Constant.SCHEMA_NAME_IIUC);
+        studentDataInitializer.run(Constant.SCHEMA_NAME_CUET);
     }
-
-    //hide errorController & schema
-/*  @Bean
-  public Docket api() {
-    return new Docket(DocumentationType.SWAGGER_2)
-        .select()
-        .apis(RequestHandlerSelectors.basePackage("com.faisal_bs23.reportgeneratorusingjasper"))
-        .build();
-  }*/
 
     @Bean
     public Docket api() {
@@ -47,5 +44,4 @@ public class ReportGeneratorUsingJasperApplication {
                     .build())
             .directModelSubstitute(Void.class, void.class);
     }
-
 }

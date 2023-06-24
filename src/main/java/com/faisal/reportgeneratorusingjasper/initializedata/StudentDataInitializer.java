@@ -2,23 +2,24 @@ package com.faisal.reportgeneratorusingjasper.initializedata;
 
 import com.faisal.reportgeneratorusingjasper.persistence.entity.StudentEntity;
 import com.faisal.reportgeneratorusingjasper.persistence.repository.StudentRepository;
+import com.faisal.reportgeneratorusingjasper.configuration.multitenancy.TenantContext;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
-@Slf4j
 @RequiredArgsConstructor
-public class InitialStudentData implements CommandLineRunner {
+@Service
+public class StudentDataInitializer {
 
     private final StudentRepository studentRepository;
 
-    @Override
-    public void run(String... args) throws Exception {
+    public void run(String tenantIdentifier) {
+        TenantContext.setCurrentTenant(tenantIdentifier);
         var students = new StudentEntity[81];
+
+        if (studentRepository.count() > 0)
+            return;
 
         students[0] = new StudentEntity("C161000", "CR7", "2016", "8", "A", "3.5", 150);
         students[1] = new StudentEntity("C161001", "AShraful", "2016", "8", "A", "3.5", 150);

@@ -1,0 +1,33 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <property name="schema.name" value="iiuc"/>
+
+    <changeSet author="bs539 (generated)" id="1694088691570-1">
+        <createTable schemaName="${schema.name}" tableName="jasper_design_configuration">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jasper_design_configuration_pkey"/>
+            </column>
+            <column name="report_owner_name" type="VARCHAR(50)"/>
+            <column name="theme_color_code" type="VARCHAR(10)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bs539 (generated)" id="1694088691570-2">
+        <createTable schemaName="${schema.name}" tableName="student_information">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="student_information_pkey"/>
+            </column>
+            <column name="student_id" type="VARCHAR(255)"/>
+            <column name="student_name" type="VARCHAR(255)"/>
+            <column name="admission_year" type="VARCHAR(255)"/>
+            <column name="current_semester" type="VARCHAR(255)"/>
+            <column name="current_section" type="VARCHAR(255)"/>
+            <column name="current_cgpa" type="VARCHAR(255)"/>
+            <column name="credit_completed" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="bs539 (generated)" id="1694088691570-3">
+        <addUniqueConstraint schemaName="${schema.name}" columnNames="report_owner_name" constraintName="uk_ohv1pqkts75wvmioo7i0od2l2" tableName="jasper_design_configuration"/>
+    </changeSet>
+</databaseChangeLog>
